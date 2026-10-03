@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP Minecraft Ultimate Mods Database - The World's Largest Collection</title>
+    <style>
+        :root {
+            --bg-color: #080c14;
+            --card-bg: #111827;
+            --card-hover: #1f2937;
+            --accent-color: #38bdf8;
+            --accent-hover: #0ea5e9;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: #374151;
+            --badge-bg: rgba(56, 189, 248, 0.1);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .creator-banner {
+            text-align: center;
+            background: linear-gradient(90deg, #0369a1, #0284c7, #0369a1);
+            color: #ffffff;
+            padding: 12px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(3, 105, 161, 0.4);
+            letter-spacing: 0.5px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 35px;
+            background: linear-gradient(135deg, #111827, #0f172a);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+        header h1 {
+            font-size: 2.8rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(56, 189, 248, 0.3);
+        }
+        header p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+        }
+        .search-container {
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+        .search-input {
+            width: 100%;
+            padding: 16px 22px;
+            font-size: 1.15rem;
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .search-input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+        }
+        .category-section {
+            margin-bottom: 50px;
+        }
+        .category-title {
+            font-size: 1.9rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .mods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 22px;
+        }
+        .mod-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 22px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .mod-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+            border-color: var(--accent-color);
+            background-color: var(--card-hover);
+        }
+        .mod-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .mod-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+        .mod-loader {
+            font-size: 0.75rem;
+            background: var(--badge-bg);
+            color: var(--accent-color);
+            padding: 4px 8px;
+            border-radius: 6px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            white-space: nowrap;
+        }
+        .mod-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .mod-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 12px;
+        }
+        .mod-version {
+            background: rgba(156, 163, 175, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        footer.site-footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            background-color: #0b1120;
+            border-radius: 16px;
+        }
+        footer.site-footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        footer.site-footer a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Creator Banner -->
+    <div class="creator-banner">
+        This website was created by Abdo ⚡
+    </div>
+
+    <header>
+        <h1>AP Minecraft Ultimate Database</h1>
+        <p>The ultimate global encyclopedia for Minecraft mods (Performance, Tech, Magic, RPG, Combat & Building)</p>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search thousands of mods (e.g., Sodium, Create, Alex, Twilight)..." onkeyup="filterMods()">
+    </div>
+
+    <main id="mainContainer">
+        <!-- Categories and mods are dynamically generated here -->
+    </main>
+
+    <footer class="site-footer">
+        <p>All Rights Reserved © 2026 | AP Minecraft Project</p>
+        <p style="margin-top: 12px;">
+            <a id="aiRedirectLink" onclick="redirectToAIInfo(event)">Click here to view site creation details</a>
+        </p>
+    </footer>
+
+    <script>
+        const categories = [
+            {
+                id: "performance",
+                name: "⚡ 1. Performance & Optimization",
+                mods: [
+                    { name: "Sodium", loader: "Fabric", desc: "Modern rendering engine replacement for Minecraft to dramatically improve frame rates and smoothness.", version: "1.21+" },
+                    { name: "Lithium", loader: "Fabric/Quilt", desc: "Optimizes physics, mob AI, and general tick scheduling without altering vanilla game mechanics.", version: "1.21+" },
+                    { name: "FerriteCore", loader: "All", desc: "Genius mod that significantly reduces memory usage (RAM) for blocks and states.", version: "All" },
+                    { name: "Krypton", loader: "Fabric", desc: "Optimizes the networking stack and server connection protocols to reduce lag and ping.", version: "1.21" },
+                    { name: "ImmediatelyFast", loader: "All", desc: "Speeds up immediate mode rendering for user interfaces and screen elements to prevent stuttering.", version: "1.20-1.21" },
+                    { name: "EntityCulling", loader: "All", desc: "Stops rendering entities and mobs hidden behind walls to grant massive frame rate boosts.", version: "All" },
+                    { name: "C2ME", loader: "Fabric", desc: "Leverages multi-core processing to accelerate chunk generation and loading speeds.", version: "1.21" },
+                    { name: "LazyDFU", loader: "All", desc: "Postpones heavy data fixer upper loading at startup to accelerate game launch times.", version: "All" },
+                    { name: "Very Many Players (VMP)", loader: "Fabric", desc: "Improves performance in crowded multiplayer servers and prevents mass lag spikes.", version: "1.21" },
+                    { name: "Clumps", loader: "All", desc: "Bundles scattered experience orb entities into a single entity to prevent lag spikes.", version: "All" },
+                    { name: "Dynamic FPS", loader: "All", desc: "Automatically throttles GPU and CPU usage when the game window is unfocused or minimized.", version: "All" },
+                    { name: "ModernFix", loader: "All", desc: "Deep, comprehensive optimization and bug fixes for memory and performance in modern versions.", version: "All" },
+                    { name: "Noisium", loader: "Fabric", desc: "Optimizes terrain generation algorithms and heavy world-gen math operations.", version: "1.21" },
+                    { name: "DashLoader", loader: "Fabric", desc: "Caches game content to speed up game startup times down to mere seconds.", version: "1.20" },
+                    { name: "MemoryLeakFix", loader: "All", desc: "Prevents memory leaks during long gaming sessions and continuous server operations.", version: "All" },
+                    { name: "Starlight", loader: "Fabric", desc: "A rewrite of the light engine for maximum performance and faster lighting calculations.", version: "1.20" },
+                    { name: "Spark", loader: "All", desc: "Performance profiling tool to diagnose lag sources, CPU loads, and memory usage accurately.", version: "All" },
+                    { name: "Rats", loader: "Forge", desc: "Adds trainable rats that can assist you with various automated tasks and chores.", version: "All" }
+                ]
+            },
+            {
+                id: "graphics",
+                name: "🌅 2. Graphics, Shaders & Visual Design",
+                mods: [
+                    { name: "Iris Shaders", loader: "Fabric", desc: "The fastest, most modern alternative to OptiFine for running shaders alongside performance mods.", version: "1.21" },
+                    { name: "Complementary Reimagined", loader: "Shader", desc: "Breathtaking shader combining classic beauty with innovative lighting enhancements.", version: "Shader" },
+                    { name: "Complementary Unbound", loader: "Shader", desc: "The most realistic, detailed, and feature-rich version of the famous Complementary family.", version: "Shader" },
+                    { name: "BSL Shaders", loader: "Shader", desc: "The legendary classic shader known for its vibrant lighting and mesmerizing colors.", version: "Shader" },
+                    { name: "Photon Shader", loader: "Shader", desc: "Shader focusing on physical realism for lighting and water reflections with stunning fidelity.", version: "Shader" },
+                    { name: "Distant Horizons", loader: "All", desc: "Completely changes the game; lets you render miles of LOD distant worlds smoothly.", version: "1.21" },
+                    { name: "Continuity", loader: "Fabric", desc: "Adds support for Connected Textures (seamless glass and blocks) without needing OptiFine.", version: "1.21" },
+                    { name: "Fresh Animations", loader: "Resourcepack", desc: "Legendary animation resource pack making mobs and villagers more lively and realistic.", version: "Pack" },
+                    { name: "Sound Physics Remastered", loader: "All", desc: "Adds sound reverberation, echo, and acoustic occlusion based on room sizes and structures.", version: "All" },
+                    { name: "Presence Footsteps", loader: "All", desc: "Adds realistic, dynamic footstep audio corresponding directly to the block materials you walk on.", version: "All" },
+                    { name: "Emissive Textures", loader: "All", desc: "Allows glowing eyes and luminescent blocks to shine properly in total darkness.", version: "All" },
+                    { name: "Euphoria Patches", loader: "Shader Addon", desc: "Incredible expansion patches for Complementary shaders adding auroras, stars, and immersive environments.", version: "Shader" },
+                    { name: "Oculus", loader: "Forge/Neo", desc: "An alternative port of Iris to run Iris-compatible shaders on Forge and NeoForge platforms.", version: "All" },
+                    { name: "Replay Mod", loader: "Fabric", desc: "Record, render, and replay your cinematic worlds with professional camera controls.", version: "All" }
+                ]
+            },
+            {
+                id: "technology",
+                name: "⚙️ 3. Technology, Automation & Heavy Machinery",
+                mods: [
+                    { name: "Create Mod", loader: "Forge/Fabric", desc: "The legendary mod for rotational power, mechanical machinery, trains, and aesthetic automation.", version: "1.20-1.21" },
+                    { name: "Create: Steam 'n' Rails", loader: "Addon", desc: "Adds advanced train tracks, custom carts, and signaling systems to the Create universe.", version: "Addon" },
+                    { name: "Create: The Factory Must Grow", loader: "Addon", desc: "Massive expansions for industrial factories, manufacturing materials, and automated lines.", version: "Addon" },
+                    { name: "Applied Energistics 2", loader: "All", desc: "Massive digital storage system indexing millions of items inside compact tech drives.", version: "All" },
+                    { name: "Refined Storage", loader: "All", desc: "An easier, lightweight alternative digital storage network for smart container linking.", version: "All" },
+                    { name: "Mekanism", loader: "Forge/Neo", desc: "Energy systems, advanced ore processing, chemical reactions, and massive nuclear reactors.", version: "All" },
+                    { name: "Industrial Foregoing", loader: "All", desc: "Advanced industrial machinery for automated farming, mining, and resource generation.", version: "All" },
+                    { name: "Thermal Expansion", loader: "Forge", desc: "Classic machinery suite for power generation, ore doubling, and resource processing.", version: "All" },
+                    { name: "Powah!", loader: "All", desc: "Advanced energy generators, batteries, and easily routable cables for inter-mod power.", version: "All" },
+                    { name: "Pipez", loader: "All", desc: "Smart, configurable pipes for transferring fluids, energy, and items with extreme speed.", version: "All" },
+                    { name: "Draconic Evolution", loader: "Forge", desc: "Overpowered draconian energy, invincible armor sets, and ultimate destruction tools.", version: "All" },
+                    { name: "Ender IO", loader: "All", desc: "Classic conduits, machines, generators, and spatial manipulation tools.", version: "All" },
+                    { name: "ProjectE", loader: "All", desc: "Transmute items and resources using Equivalent Exchange energy principles.", version: "All" }
+                ]
+            },
+            {
+                id: "magic",
+                name: "🔮 4. Magic, Mythos, Dimensions & RPG Powers",
+                mods: [
+                    { name: "Iron's Spells 'n Spellbooks", loader: "All", desc: "Incredible spell casting combat system with magical staves, scrolls, and epic spellbooks.", version: "1.20-1.21" },
+                    { name: "Ars Nouveau", loader: "All", desc: "Exploration magic mod allowing you to craft custom spells and build wizard towers.", version: "All" },
+                    { name: "Botania", loader: "All", desc: "Tech-like magic mod centered around natural floral energy, mana manipulation, and automation.", version: "All" },
+                    { name: "Cataclysm", loader: "Forge/Neo", desc: "Adds terrifying, epic bosses hidden in deep dungeons with incredible loot drops.", version: "All" },
+                    { name: "Apothic Attributes", loader: "All", desc: "RPG gear stat system with randomized elite bosses and legendary tiers.", version: "All" },
+                    { name: "Blood Magic", loader: "Forge", desc: "Dark magic utilizing blood sacrifices and rituals to unlock supernatural powers.", version: "All" },
+                    { name: "Twilight Forest", loader: "All", desc: "Massive mystical dimension filled with castles, mazes, bosses, and enchanted biomes.", version: "All" },
+                    { name: "Alex's Mobs", loader: "All", desc: "Adds dozens of realistic and mythical animals and creatures to populate your worlds.", version: "All" },
+                    { name: "Alex's Caves", loader: "All", desc: "Deep, terrifying subterranean caves with unique biomes, hazards, and custom mobs.", version: "All" },
+                    { name: "Ice and Fire: Dragons", loader: "Forge", desc: "Roaming giant dragons, sea serpents, and mythical beasts across the world.", version: "All" },
+                    { name: "Apotheosis", loader: "All", desc: "Overhaul for item enchanters, mob spawners, and epic equipment upgrades.", version: "All" }
+                ]
+            },
+            {
+                id: "combat",
+                name: "⚔️ 5. Combat, Challenge, Movement & Animation",
+                mods: [
+                    { name: "Better Combat", loader: "All", desc: "Overhauls vanilla combat into combo attacks, dual-wielding, and realistic strike impacts.", version: "1.20-1.21" },
+                    { name: "Epic Fight", loader: "Forge", desc: "Transforms character and mob animations into modern action RPG combat styles.", version: "All" },
+                    { name: "Combat Roll", loader: "All", desc: "Adds professional rolling mechanics to dodge rapid enemy strikes and tactical hits.", version: "All" },
+                    { name: "Shield Expansion", loader: "All", desc: "Adds diverse new shields with interactive defensive and offensive capabilities.", version: "All" },
+                    { name: "MaceBot Training", loader: "Fabric", desc: "Specialized mods for training mace smash hits and advanced bot sparring control.", version: "1.21" },
+                    { name: "ParCool!", loader: "All", desc: "Advanced parkour moves like wall-running, double jumping, sliding, and ledge hanging.", version: "All" },
+                    { name: "Simple Voice Chat", loader: "All", desc: "In-game proximity voice chat with directional audio, echo effects, and distance falloff.", version: "All" },
+                    { name: "First Person Model", loader: "All", desc: "Renders your full body in first-person view for absolute immersion.", version: "All" }
+                ]
+            },
+            {
+                id: "worldbuilding",
+                name: "🌍 6. Open Worlds, Terrain & Building",
+                mods: [
+                    { name: "Terralith", loader: "Data/Mod", desc: "Overhauls world generation with towering mountains, deep canyons, and stunning caves without custom blocks.", version: "All" },
+                    { name: "Biomes O' Plenty", loader: "All", desc: "Adds dozens of lush natural biomes, trees, and unique color palettes to the world.", version: "All" },
+                    { name: "Nullscape", loader: "All", desc: "Redesigns the End dimension into an eerie, vast, and visually stunning cosmic landscape.", version: "All" },
+                    { name: "Incendium", loader: "All", desc: "Enhances the Nether dimension with high danger, giant structures, and unique creatures.", version: "All" },
+                    { name: "Macaw's Bridges", loader: "All", desc: "Detailed wooden and stone bridges for enhancing village, town, and river builds.", version: "All" },
+                    { name: "Macaw's Roofs", loader: "All", desc: "Diverse, sloped, and stylish roofs for professional architectural housing designs.", version: "All" },
+                    { name: "Macaw's Doors & Fences", loader: "All", desc: "Extra modern and classic doors and fences matching all decorative themes.", version: "All" },
+                    { name: "Amendments", loader: "All", desc: "Clever micro-details like placing candles on cakes and hanging armor displays properly.", version: "All" },
+                    { name: "Chisels & Bits", loader: "All", desc: "Chisel blocks into microscopic pixels for ultra-precise architectural detailing.", version: "All" },
+                    { name: "Yungs Better Strongholds", loader: "All", desc: "Redesigns strongholds into massive, complex labyrinths filled with puzzles.", version: "All" },
+                    { name: "Yungs Better Mineshafts", loader: "All", desc: "Massive, detailed, and dangerous abandoned mineshafts deep underground.", version: "All" }
+                ]
+            },
+            {
+                id: "utilities",
+                name: "🛠 7. Utilities, Maps & HUD",
+                mods: [
+                    { name: "Roughly Enough Items (REI)", loader: "Fabric", desc: "Displays all items, recipes, and craft usages with extreme speed and precision.", version: "1.21" },
+                    { name: "Just Enough Items (JEI)", loader: "Forge/Neo", desc: "The classic and most popular item recipe and ingredient viewing assistant.", version: "All" },
+                    { name: "JourneyMap", loader: "All", desc: "Detailed interactive mini-map and full-screen map with waypoint tracking.", version: "All" },
+                    { name: "Xaero's Minimap & World Map", loader: "All", desc: "Lightweight, highly accurate mapping suite with robust waypoint management.", version: "All" },
+                    { name: "WorldEdit", loader: "All", desc: "The legendary in-game world editing tool for fast building and geometry generation.", version: "All" },
+                    { name: "Carpet Mod", loader: "Fabric", desc: "Utility tool for farm automation, mechanic testing, and administrative server controls.", version: "1.21" },
+                    { name: "Litematica", loader: "Fabric", desc: "Schematic projection mod to build complex designs block-by-block accurately.", version: "1.21" },
+                    { name: "MiniHUD", loader: "Fabric", desc: "Displays coordinates, looking angles, and entity data overlays on screen.", version: "1.21" },
+                    { name: "FreeCam", loader: "All", desc: "Lets you detach your camera to inspect builds or scout areas without moving your player.", version: "All" },
+                    { name: "Inventory Profiles Next", loader: "All", desc: "Automatically sorts inventories and containers with single clicks and locks items.", version: "All" },
+                    { name: "Mouse Tweaks", loader: "All", desc: "Streamlines item dragging and inventory management operations inside containers.", version: "All" },
+                    { name: "Controllable", loader: "All", desc: "Full native gamepad and controller support inside the game.", version: "All" }
+                ]
+            }
+        ];
+
+        function renderCategories() {
+            const container = document.getElementById('mainContainer');
+            container.innerHTML = '';
+
+            categories.forEach(cat => {
+                let sectionHTML = `
+                    <section class="category-section" id="${cat.id}">
+                        <h2 class="category-title">${cat.name}</h2>
+                        <div class="mods-grid">
+                `;
+
+                cat.mods.forEach(mod => {
+                    sectionHTML += `
+                        <div class="mod-card" data-name="${mod.name.toLowerCase()}">
+                            <div>
+                                <div class="mod-header">
+                                    <span class="mod-name">${mod.name}</span>
+                                    <span class="mod-loader">${mod.loader}</span>
+                                </div>
+                                <p class="mod-desc">${mod.desc}</p>
+                            </div>
+                            <div class="mod-footer">
+                                <span>Version Support</span>
+                                <span class="mod-version">${mod.version}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                sectionHTML += `</div></section>`;
+                container.innerHTML += sectionHTML;
+            });
+        }
+
+        function filterMods() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.mod-card');
+
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name');
+                if (name.includes(query)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        // Automatic redirect function when clicking the footer link
+        function redirectToAIInfo(event) {
+            event.preventDefault();
+            
+            document.open();
+            document.write(`
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>AI Creation Info</title>
+                    <style>
+                        body {
+                            background-color: #0f172a;
+                            color: #f8fafc;
+                            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 100vh;
+                            margin: 0;
+                            text-align: center;
+                            padding: 20px;
+                        }
+                        .box {
+                            background: #1e293b;
+                            padding: 40px;
+                            border-radius: 20px;
+                            border: 2px solid #38bdf8;
+                            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+                            max-width: 600px;
+                        }
+                        h1 {
+                            color: #38bdf8;
+                            margin-bottom: 20px;
+                        }
+                        p {
+                            font-size: 1.2rem;
+                            line-height: 1.6;
+                            color: #94a3b8;
+                            margin-bottom: 30px;
+                        }
+                        .back-btn {
+                            background-color: #38bdf8;
+                            color: #0f172a;
+                            border: none;
+                            padding: 12px 25px;
+                            font-size: 1.1rem;
+                            font-weight: bold;
+                            border-radius: 8px;
+                            cursor: pointer;
+                            transition: background 0.3s;
+                        }
+                        .back-btn:hover {
+                            background-color: #0ea5e9;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="box">
+                        <h1>🤖 System Information</h1>
+                        <p>This website was created using Artificial Intelligence based on the request and vision of the brilliant developer <strong>Abdo</strong> to provide the ultimate Minecraft mods database.</p>
+                        <button class="back-btn" onclick="location.reload()">Return to Main Website</button>
+                    </div>
+                </body>
+                </html>
+            `);
+            document.close();
+        }
+
+        window.onload = renderCategories;
+    </script>
+</body>
+</html>
